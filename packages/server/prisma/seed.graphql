@@ -1,0 +1,12 @@
+mutation {
+  list1: createTodoList(
+    data: {
+      title: "Christmas gifts"
+      entries: {
+        create: [{ title: "Father", done: true }, { title: "Mother", done: false }, { title: "Sister", done: false }]
+      }
+    }
+  ) {
+    id
+  }
+}

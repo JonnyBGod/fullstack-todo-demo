@@ -1,0 +1,11 @@
+CHANGELOG.md
+README.md
+package.json
+package-lock.json
+docs/
+dist/
+*.yaml
+_book/
+docs/_book
+documentation/_book
+**/__generated__/**
