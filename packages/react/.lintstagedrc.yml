@@ -1,0 +1,6 @@
+linters:
+  "*.{ts,tsx}":
+    - tslint --fix
+    - git add
+ignore:
+  - "**/src/__generated__/**"

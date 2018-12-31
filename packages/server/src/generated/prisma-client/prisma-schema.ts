@@ -63,7 +63,7 @@ type TodoEntry {
   id: ID!
   title: String!
   done: Boolean!
-  list: TodoList!
+  list: TodoList
 }
 
 type TodoEntryConnection {
@@ -75,7 +75,7 @@ type TodoEntryConnection {
 input TodoEntryCreateInput {
   title: String!
   done: Boolean
-  list: TodoListCreateOneWithoutEntriesInput!
+  list: TodoListCreateOneWithoutEntriesInput
 }
 
 input TodoEntryCreateManyWithoutListInput {
@@ -169,7 +169,7 @@ input TodoEntrySubscriptionWhereInput {
 input TodoEntryUpdateInput {
   title: String
   done: Boolean
-  list: TodoListUpdateOneRequiredWithoutEntriesInput
+  list: TodoListUpdateOneWithoutEntriesInput
 }
 
 input TodoEntryUpdateManyDataInput {
@@ -329,10 +329,12 @@ input TodoListUpdateManyMutationInput {
   title: String
 }
 
-input TodoListUpdateOneRequiredWithoutEntriesInput {
+input TodoListUpdateOneWithoutEntriesInput {
   create: TodoListCreateWithoutEntriesInput
   update: TodoListUpdateWithoutEntriesDataInput
   upsert: TodoListUpsertWithoutEntriesInput
+  delete: Boolean
+  disconnect: Boolean
   connect: TodoListWhereUniqueInput
 }
 

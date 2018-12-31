@@ -9,9 +9,11 @@ const queryResolvers = {
 }
 
 const mutationResolvers = {
-  upsertTodoEntry: forwardTo('prisma'),
+  createTodoEntry: forwardTo('prisma'),
+  updateTodoEntry: forwardTo('prisma'),
   deleteTodoEntry: forwardTo('prisma'),
-  upsertTodoList: forwardTo('prisma'),
+  createTodoList: forwardTo('prisma'),
+  updateTodoList: forwardTo('prisma'),
   deleteTodoList: forwardTo('prisma')
 }
 
@@ -22,7 +24,7 @@ const resolvers = {
 
 const server = new GraphQLServer({
   typeDefs: './src/generated/graphql-schema/prisma.graphql',
-  resolvers: resolvers as any,
+  resolvers,
   context: {
     prisma: new Prisma({
       typeDefs: './src/generated/graphql-schema/prisma.graphql',

@@ -173,10 +173,12 @@ export type TodoListOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface TodoListUpdateOneRequiredWithoutEntriesInput {
+export interface TodoListUpdateOneWithoutEntriesInput {
   create?: TodoListCreateWithoutEntriesInput;
   update?: TodoListUpdateWithoutEntriesDataInput;
   upsert?: TodoListUpsertWithoutEntriesInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
   connect?: TodoListWhereUniqueInput;
 }
 
@@ -225,7 +227,7 @@ export interface TodoListSubscriptionWhereInput {
 export interface TodoEntryCreateInput {
   title: String;
   done?: Boolean;
-  list: TodoListCreateOneWithoutEntriesInput;
+  list?: TodoListCreateOneWithoutEntriesInput;
 }
 
 export interface TodoListUpdateManyMutationInput {
@@ -253,7 +255,7 @@ export type TodoListWhereUniqueInput = AtLeastOne<{
 export interface TodoEntryUpdateInput {
   title?: String;
   done?: Boolean;
-  list?: TodoListUpdateOneRequiredWithoutEntriesInput;
+  list?: TodoListUpdateOneWithoutEntriesInput;
 }
 
 export interface TodoEntryUpdateWithoutListDataInput {

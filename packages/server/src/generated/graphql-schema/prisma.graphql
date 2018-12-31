@@ -16,21 +16,13 @@ type Mutation {
   createTodoEntry(data: TodoEntryCreateInput!): TodoEntry!
   updateTodoEntry(data: TodoEntryUpdateInput!, where: TodoEntryWhereUniqueInput!): TodoEntry
   updateManyTodoEntries(data: TodoEntryUpdateManyMutationInput!, where: TodoEntryWhereInput): BatchPayload!
-  upsertTodoEntry(
-    where: TodoEntryWhereUniqueInput!
-    create: TodoEntryCreateInput!
-    update: TodoEntryUpdateInput!
-  ): TodoEntry!
+  upsertTodoEntry(where: TodoEntryWhereUniqueInput!, create: TodoEntryCreateInput!, update: TodoEntryUpdateInput!): TodoEntry!
   deleteTodoEntry(where: TodoEntryWhereUniqueInput!): TodoEntry
   deleteManyTodoEntries(where: TodoEntryWhereInput): BatchPayload!
   createTodoList(data: TodoListCreateInput!): TodoList!
   updateTodoList(data: TodoListUpdateInput!, where: TodoListWhereUniqueInput!): TodoList
   updateManyTodoLists(data: TodoListUpdateManyMutationInput!, where: TodoListWhereInput): BatchPayload!
-  upsertTodoList(
-    where: TodoListWhereUniqueInput!
-    create: TodoListCreateInput!
-    update: TodoListUpdateInput!
-  ): TodoList!
+  upsertTodoList(where: TodoListWhereUniqueInput!, create: TodoListCreateInput!, update: TodoListUpdateInput!): TodoList!
   deleteTodoList(where: TodoListWhereUniqueInput!): TodoList
   deleteManyTodoLists(where: TodoListWhereInput): BatchPayload!
 }
@@ -54,43 +46,11 @@ type PageInfo {
 
 type Query {
   todoEntry(where: TodoEntryWhereUniqueInput!): TodoEntry
-  todoEntries(
-    where: TodoEntryWhereInput
-    orderBy: TodoEntryOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [TodoEntry]!
-  todoEntriesConnection(
-    where: TodoEntryWhereInput
-    orderBy: TodoEntryOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): TodoEntryConnection!
+  todoEntries(where: TodoEntryWhereInput, orderBy: TodoEntryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TodoEntry]!
+  todoEntriesConnection(where: TodoEntryWhereInput, orderBy: TodoEntryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TodoEntryConnection!
   todoList(where: TodoListWhereUniqueInput!): TodoList
-  todoLists(
-    where: TodoListWhereInput
-    orderBy: TodoListOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [TodoList]!
-  todoListsConnection(
-    where: TodoListWhereInput
-    orderBy: TodoListOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): TodoListConnection!
+  todoLists(where: TodoListWhereInput, orderBy: TodoListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TodoList]!
+  todoListsConnection(where: TodoListWhereInput, orderBy: TodoListOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): TodoListConnection!
   node(id: ID!): Node
 }
 
@@ -103,7 +63,7 @@ type TodoEntry {
   id: ID!
   title: String!
   done: Boolean!
-  list: TodoList!
+  list: TodoList
 }
 
 type TodoEntryConnection {
@@ -115,7 +75,7 @@ type TodoEntryConnection {
 input TodoEntryCreateInput {
   title: String!
   done: Boolean
-  list: TodoListCreateOneWithoutEntriesInput!
+  list: TodoListCreateOneWithoutEntriesInput
 }
 
 input TodoEntryCreateManyWithoutListInput {
@@ -209,7 +169,7 @@ input TodoEntrySubscriptionWhereInput {
 input TodoEntryUpdateInput {
   title: String
   done: Boolean
-  list: TodoListUpdateOneRequiredWithoutEntriesInput
+  list: TodoListUpdateOneWithoutEntriesInput
 }
 
 input TodoEntryUpdateManyDataInput {
@@ -298,15 +258,7 @@ input TodoEntryWhereUniqueInput {
 type TodoList {
   id: ID!
   title: String!
-  entries(
-    where: TodoEntryWhereInput
-    orderBy: TodoEntryOrderByInput
-    skip: Int
-    after: String
-    before: String
-    first: Int
-    last: Int
-  ): [TodoEntry!]
+  entries(where: TodoEntryWhereInput, orderBy: TodoEntryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [TodoEntry!]
 }
 
 type TodoListConnection {
@@ -377,10 +329,12 @@ input TodoListUpdateManyMutationInput {
   title: String
 }
 
-input TodoListUpdateOneRequiredWithoutEntriesInput {
+input TodoListUpdateOneWithoutEntriesInput {
   create: TodoListCreateWithoutEntriesInput
   update: TodoListUpdateWithoutEntriesDataInput
   upsert: TodoListUpsertWithoutEntriesInput
+  delete: Boolean
+  disconnect: Boolean
   connect: TodoListWhereUniqueInput
 }
 

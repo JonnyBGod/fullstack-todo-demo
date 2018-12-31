@@ -1,12 +1,12 @@
 type TodoList {
   id: ID! @unique
   title: String!
-  entries: [TodoEntry!]!
+  entries: [TodoEntry!]
 }
 
 type TodoEntry {
   id: ID! @unique
   title: String!
   done: Boolean! @default(value: "false")
-  list: TodoList!
+  list: TodoList
 }

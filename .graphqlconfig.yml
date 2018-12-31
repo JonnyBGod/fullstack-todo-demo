@@ -1,0 +1,5 @@
+{
+  'schemaPath': 'packages/react/src/schema.graphql',
+  'extensions':
+    { 'endpoints': { 'prod': { 'url': 'http://localhost:4000' }, 'dev': { 'url': 'http://localhost:4000' } } },
+}
