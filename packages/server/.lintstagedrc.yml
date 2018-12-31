@@ -1,6 +1,6 @@
 linters:
-  "*.ts":
+  '*.ts':
     - tslint --fix
     - git add
 ignore:
-  - "**/src/generated/**"
+  - '**/src/generated/**'

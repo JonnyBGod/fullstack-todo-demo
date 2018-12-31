@@ -1,6 +1,7 @@
 linters:
-  "*.{ts,tsx}":
+  '*.{ts,tsx}':
     - tslint --fix
     - git add
 ignore:
-  - "**/src/__generated__/**"
+  - '**/src/__generated__/**'
+  - '**/src/schema.json'

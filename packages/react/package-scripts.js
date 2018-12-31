@@ -10,7 +10,7 @@ module.exports = {
     schema:
       'apollo-codegen introspect-schema ../server/src/generated/graphql-schema/prisma.graphql --output ./src/schema.json',
     types:
-      'apollo-codegen generate ./src/**/queries.ts --addTypename --schema ./src/schema.json --target typescript --output ./src/__generated__/types.ts',
+      'apollo-codegen generate ./src/graphql/*.ts --addTypename --schema ./src/schema.json --target typescript --output ./src/__generated__/types.ts',
 
     prettier: 'prettier --write "./**/*.{js,ts,json,scss,css}"'
   }
